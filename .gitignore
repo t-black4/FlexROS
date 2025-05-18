@@ -1,0 +1,18 @@
+# Core ROS 2 patterns
+*/build/
+*/install/
+*/log/
+*.pyc
+*.pyo
+__pycache__
+
+# ROS message/service files
+*.msg
+*.srv
+*.action
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swos
