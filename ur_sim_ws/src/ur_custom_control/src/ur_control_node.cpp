@@ -50,7 +50,7 @@ public:
 
     // Create timer for continuous joint movement
     timer_ = this->create_wall_timer(
-      50ms, std::bind(&URControlNode::timer_callback, this));
+      100ms, std::bind(&URControlNode::timer_callback, this));
 
     // Initialize joint names
     joint_names_ = {
@@ -111,25 +111,28 @@ private:
    * This function is called periodically by the timer. It creates a sinusoidal joint state
    * and publishes it to the /joint_states topic.
    */
-  void timer_callback()
-  {
-    auto joint_state = sensor_msgs::msg::JointState();
-    joint_state.header.stamp = this->now();
-    joint_state.name = joint_names_;
+   void timer_callback()
+   {
+     current_time_ += 0.1;
+     double pos = 2.0 * sin(current_time_);
+     RCLCPP_INFO(this->get_logger(), "Publishing simulated joint position: %.2f", pos);
+   
+     auto joint_state = sensor_msgs::msg::JointState();
+     joint_state.header.stamp = this->now();
+     joint_state.name = joint_names_;
     
     // Create a dramatic sinusoidal movement
-    current_time_ += 0.1;
     joint_state.position = {
-      2.0 * sin(current_time_),  // Shoulder pan
-      1.0 * cos(current_time_),  // Shoulder lift
-      1.5 * sin(current_time_),  // Elbow
-      1.0 * cos(current_time_),  // Wrist 1
-      1.2 * sin(current_time_),  // Wrist 2
-      0.8 * cos(current_time_)   // Wrist 3
+      1.0 * sin(current_time_),  // Shoulder pan
+      1.0/2 * cos(current_time_),  // Shoulder lift
+      1.1* sin(current_time_),  // Elbow
+      1.0 + current_time_,  // Wrist 1
+      1.2 + current_time_,  // Wrist 2
+      0.8 + current_time_   // Wrist 3
     };
-
-    joint_state_pub_->publish(joint_state);
-  }
+   
+     joint_state_pub_->publish(joint_state);
+   }
 
   // Subscribers
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr joint_states_sub_;
