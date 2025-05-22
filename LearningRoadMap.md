@@ -17,10 +17,19 @@
 
 ### 🔹 Skills to Learn:
 
-* ROS 2 topics, messages, and timers
-* RViz visualization setup
-* Basic URDF model understanding
-* Setup MoveIt or RViz Motion Planning Plugin
+[ x ]ROS 2 topics, messages, and timers
+    - Created a ROS 2 node
+    - Subscribed to topics
+    - Published to topics
+    - Used timers
+[ x ]RViz visualization setup
+    - Created a launch file
+    - Added a robot model to RViz
+    - Added a joint state publisher
+    - Added a robot state publisher
+[ x ]Basic URDF model understanding
+    - Used Universal Robots ROS2 Description
+[ ]Setup MoveIt or RViz Motion Planning Plugin
 
 ---
 
