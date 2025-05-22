@@ -6,10 +6,8 @@ This repository contains the implementation for controlling and visualizing the 
 ## Prerequisites
 
 - ROS 2 Humble
-- uArm Swift Pro robot
 - Required ROS 2 packages:
   - [ur_description](https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver) (Universal Robots ROS2 Description Package)
-  - ur_custom_control
 
 ## Installation
 
@@ -66,27 +64,11 @@ orientation:
   w: 1.0"
 ```
 
-## Visualization in RViz
 
-- The robot model will be displayed in RViz
-- Real-time joint states and robot position are visualized
-- You can interact with the robot model using the interactive markers
-
-## Troubleshooting
-
-1. If the robot doesn't move:
-   - Check if all nodes are running
-   - Verify the robot is properly connected
-   - Check for any error messages in the terminal
-
-2. If RViz doesn't show the robot:
-   - Ensure the robot description is properly loaded
-   - Check if the TF frames are being published
 
 ## Additional Resources
 
 - ROS 2 Documentation: [https://docs.ros.org/en/humble/](https://docs.ros.org/en/humble/)
-- uArm Swift Pro Documentation: [https://www.ufactory.cc/](https://www.ufactory.cc/)
 
 source install/setup.bash 
 ros2 topic echo /joint_states
